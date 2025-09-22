@@ -1,18 +1,20 @@
+import model.Client;
+import model.Account;
+import model.CheckingAccount;
+import model.SavingsAccount;
 
 public class Main {
-
 	public static void main(String[] args) {
-		Cliente venilton = new Cliente();
-		venilton.setNome("Venilton");
+		Client client = new Client();
+		client.setName("Gabriel");
 		
-		Conta cc = new ContaCorrente(venilton);
-		Conta poupanca = new ContaPoupanca(venilton);
+		Account clientAccount = new CheckingAccount(client);
+		Account clientSavings = new SavingsAccount(client);
 
-		cc.depositar(100);
-		cc.transferir(100, poupanca);
+		clientAccount.deposit(100);
+		clientAccount.transfer(100, clientSavings);
 		
-		cc.imprimirExtrato();
-		poupanca.imprimirExtrato();
+    clientAccount.printStatement();
+    clientSavings.printStatement();
 	}
-
 }
